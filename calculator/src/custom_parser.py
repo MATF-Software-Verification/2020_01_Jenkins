@@ -1,11 +1,14 @@
-from typing import Tuple
+from typing import Tuple, Optional
 
 from src.custom_exceptions import UnsupportedOperationException
 from src.operations import Operations
 
 
-def parser() -> Tuple[float, float, Operations]:
-    tokenized_input = input().split(' ')
+def parser(raw_input: Optional[str] = None) -> Tuple[float, float, Operations]:
+    if not raw_input:
+        tokenized_input = input().split(' ')
+    else:
+        tokenized_input = raw_input.split(' ')
 
     x = float(tokenized_input[0])
     raw_operation = tokenized_input[1]
